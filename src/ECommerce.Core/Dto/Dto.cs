@@ -1,6 +1,6 @@
 ﻿namespace ECommerce.Core.Dto
 {
-    public class Dto
+    public class Dto : IDto
     {
     }
 }
