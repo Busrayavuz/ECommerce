@@ -51,7 +51,7 @@ namespace ECommerce.Core.Data.Repository
             throw new NotImplementedException();
         }
 
-        public Task<TEntity> UpdateAsyn(TEntity t, object key)
+        public Task<TEntity> UpdateAsyn(TEntity t)
         {
             throw new NotImplementedException();
         }
