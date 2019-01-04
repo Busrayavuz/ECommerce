@@ -1,4 +1,6 @@
-﻿using ECommerce.Core.Entity;
+﻿using ECommerce.Core.Data.Context;
+using ECommerce.Core.Entity;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Linq;
 using System.Linq.Expressions;
@@ -6,19 +8,21 @@ using System.Threading.Tasks;
 
 namespace ECommerce.Core.Data.Repository
 {
-    public class Repository<TEntity, TDBContext> : IRepository<TEntity>
+    public class Repository<TEntity, TDbContext> : IRepository<TEntity>
         where TEntity : class, IEntity, new()
-        where TDBContext : class, new()
+        where TDbContext : DbContext, IDbContext, new()
     {
-        protected readonly TDBContext _context;
-        public Repository(TDBContext context)
+        protected readonly TDbContext _context;
+        protected readonly DbSet<TEntity> _dbSet;
+        public Repository(TDbContext context)
         {
             _context = context;
+            _dbSet = context.Set<TEntity>();
         }
 
-        public Task<TEntity> AddAsync(TEntity entity)
+        public async Task<TEntity> AddAsync(TEntity entity)
         {
-            throw new NotImplementedException();
+            await _dbSet.AddAsync(entity);
         }
 
         public Task<int> DeleteAsync(TEntity entity)
@@ -26,22 +30,12 @@ namespace ECommerce.Core.Data.Repository
             throw new NotImplementedException();
         }
 
-        public Task<IQueryable<TEntity>> FindAllAsync(Expression<Func<TEntity, bool>> predicate)
+        public Task<IQueryable<TEntity>> GetAllAsync(Expression<Func<TEntity, bool>> predicate = null)
         {
             throw new NotImplementedException();
         }
 
-        public Task<TEntity> FindAsync(Expression<Func<TEntity, bool>> predicate)
-        {
-            throw new NotImplementedException();
-        }
-
-        public Task<IQueryable<TEntity>> GetAllAsync()
-        {
-            throw new NotImplementedException();
-        }
-
-        public Task<TEntity> GetAsync(int id)
+        public Task<TEntity> GetAsync(Expression<Func<TEntity, bool>> predicate = null)
         {
             throw new NotImplementedException();
         }
@@ -55,6 +49,5 @@ namespace ECommerce.Core.Data.Repository
         {
             throw new NotImplementedException();
         }
-
     }
 }

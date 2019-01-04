@@ -11,10 +11,8 @@ namespace ECommerce.Core.Data.Repository
         Task<T> AddAsync(T entity);
         Task<int> DeleteAsync(T entity);
         Task<T> UpdateAsyn(T t);
-        Task<IQueryable<T>> FindAllAsync(Expression<Func<T, bool>> predicate);
-        Task<T> FindAsync(Expression<Func<T, bool>> predicate);
-        Task<IQueryable<T>> GetAllAsync();
-        Task<T> GetAsync(int id);
+        Task<IQueryable<T>> GetAllAsync(Expression<Func<T, bool>> predicate=null);
+        Task<T> GetAsync(Expression<Func<T, bool>> predicate=null);
         Task<int> SaveAsync();
     }
 }
