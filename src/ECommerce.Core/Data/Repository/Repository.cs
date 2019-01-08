@@ -16,36 +16,64 @@ namespace ECommerce.Core.Data.Repository
         protected readonly DbSet<TEntity> _dbSet;
         public Repository(TDbContext context)
         {
+            if (context == null)
+                throw new ArgumentNullException("DbContext can not be null.");
+
             _context = context;
             _dbSet = context.Set<TEntity>();
         }
 
-        public async Task<TEntity> AddAsync(TEntity entity)
-        {
-            await _dbSet.AddAsync(entity);
-        }
-
-        public Task<int> DeleteAsync(TEntity entity)
+        public void Delete(TEntity entity)
         {
             throw new NotImplementedException();
         }
 
-        public Task<IQueryable<TEntity>> GetAllAsync(Expression<Func<TEntity, bool>> predicate = null)
+        public Task DeleteAsync(TEntity entity)
         {
             throw new NotImplementedException();
         }
 
-        public Task<TEntity> GetAsync(Expression<Func<TEntity, bool>> predicate = null)
+        public TEntity Get(TEntity entity)
         {
             throw new NotImplementedException();
         }
 
-        public Task<int> SaveAsync()
+        public IQueryable<TEntity> GetAllList()
         {
             throw new NotImplementedException();
         }
 
-        public Task<TEntity> UpdateAsyn(TEntity t)
+        public IQueryable<TEntity> GetAllList(Expression<Func<TEntity, bool>> predicate)
+        {
+            throw new NotImplementedException();
+        }
+
+        public Task<IQueryable<TEntity>> GetAllListAsync()
+        {
+            throw new NotImplementedException();
+        }
+
+        public Task<IQueryable<TEntity>> GetAllListAsync(Expression<Func<TEntity, bool>> predicate)
+        {
+            throw new NotImplementedException();
+        }
+
+        public TEntity Insert(TEntity entity)
+        {
+            throw new NotImplementedException();
+        }
+
+        public Task<TEntity> InsertAsync(TEntity entity)
+        {
+            throw new NotImplementedException();
+        }
+
+        public TEntity Update(TEntity entity)
+        {
+            throw new NotImplementedException();
+        }
+
+        public Task<TEntity> UpdateAsync(TEntity entity)
         {
             throw new NotImplementedException();
         }
