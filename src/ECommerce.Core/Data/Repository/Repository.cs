@@ -8,18 +8,14 @@ using System.Threading.Tasks;
 
 namespace ECommerce.Core.Data.Repository
 {
-    public class Repository<TEntity, TDbContext> : IRepository<TEntity>
+    public class Repository<TEntity> : IRepository<TEntity>
         where TEntity : class, IEntity, new()
-        where TDbContext : DbContext, IDbContext, new()
     {
-        protected readonly TDbContext _context;
+        protected readonly DbContext _context;
         protected readonly DbSet<TEntity> _dbSet;
-        public Repository(TDbContext context)
+        public Repository(DbContext context)
         {
-            if (context == null)
-                throw new ArgumentNullException("DbContext can not be null.");
-
-            _context = context;
+            _context = context ?? throw new ArgumentNullException("DbContext can not be null.");
             _dbSet = context.Set<TEntity>();
         }
 
