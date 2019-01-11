@@ -6,5 +6,6 @@ namespace ECommerce.Entities.Concrete
     {
         public long ProductId { get; set; }
         public Product Product { get; set; }
+        public string ProductImageName { get; set; }
     }
 }

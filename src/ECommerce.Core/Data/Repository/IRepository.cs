@@ -1,23 +1,25 @@
 ﻿using ECommerce.Core.Entity;
 using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Linq.Expressions;
 using System.Threading.Tasks;
 
 namespace ECommerce.Core.Data.Repository
 {
-    public interface IRepository<T> where T : class, IEntity, new()
+    public interface IRepository<TEntity> where TEntity : class, IEntity, new()
     {
-        Task<IQueryable<T>> GetAllListAsync();
-        IQueryable<T> GetAllList();
-        IQueryable<T> GetAllList(Expression<Func<T, bool>> predicate);
-        Task<IQueryable<T>> GetAllListAsync(Expression<Func<T, bool>> predicate);
-        T Get(T entity);
-        T Insert(T entity);
-        Task<T> InsertAsync(T entity);
-        T Update(T entity);
-        Task<T> UpdateAsync(T entity);
-        void Delete(T entity);
-        Task DeleteAsync(T entity);
+        Task<TEntity> GetByIdAsync(int id);
+        IQueryable<TEntity> Find(Expression<Func<TEntity, bool>> predicate);
+        IQueryable<TEntity> GetAll();
+        Task UpdateAsync(TEntity entity);
+        Task InsertAsync(TEntity entity);
+        Task DeleteAsync(TEntity entity);
+
+
+        void Add(TEntity entity);
+        void Update(TEntity entity);
+        void Delete(TEntity entity);
+        void Delete(int id);
     }
 }

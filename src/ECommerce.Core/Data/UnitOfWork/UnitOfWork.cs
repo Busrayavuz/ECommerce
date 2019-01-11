@@ -1,10 +1,8 @@
-﻿using ECommerce.Core.Data.Context;
-using ECommerce.Core.Data.Repository;
+﻿using ECommerce.Core.Data.Repository;
 using ECommerce.Core.Entity;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
-using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 
@@ -13,6 +11,7 @@ namespace ECommerce.Core.Data.UnitOfWork
     public class UnitOfWork : IUnitOfWork
     {
         protected readonly DbContext _dbContext;
+        private readonly IDictionary<Type, object> _repositories = new Dictionary<Type, object>();
         public UnitOfWork(DbContext dbContext) => _dbContext = dbContext;
 
         public async Task<int> SaveChangesAsync(CancellationToken cancellationToken = default)
@@ -29,7 +28,7 @@ namespace ECommerce.Core.Data.UnitOfWork
         }
 
         public IRepository<T> GetRepository<T>() where T : class, IEntity, new()
-        {
+        {         
             return new Repository<T>(_dbContext);
         }
 

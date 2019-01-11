@@ -1,5 +1,5 @@
 ﻿using ECommerce.Core.Entity;
-using System.Linq;
+using System.Collections.Generic;
 
 namespace ECommerce.Entities.Concrete
 {
@@ -8,6 +8,6 @@ namespace ECommerce.Entities.Concrete
         public string CategoryName { get; set; }
         public int ParentCategoryId { get; set; }
 
-        public IQueryable<Product> Products { get; set; }
+        public virtual ICollection<Product> Products { get; set; }
     }
 }

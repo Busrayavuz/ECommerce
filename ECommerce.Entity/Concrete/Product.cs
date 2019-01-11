@@ -1,5 +1,5 @@
 ﻿using ECommerce.Core.Entity;
-using System.Linq;
+using System.Collections.Generic;
 
 namespace ECommerce.Entities.Concrete
 {
@@ -16,6 +16,6 @@ namespace ECommerce.Entities.Concrete
 
         public Category Category { get; set; }
         public Brand Brands { get; set; }
-        public IQueryable<ProductImage> ProductImage { get; set; }
+        public virtual ICollection<ProductImage> ProductImage { get; set; }
     }
 }
