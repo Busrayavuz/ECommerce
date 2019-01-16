@@ -1,7 +1,8 @@
-﻿using ECommerce.Core.Data.Context;
-using ECommerce.Core.Entity;
+﻿using ECommerce.Core.Entity;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.ChangeTracking;
 using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Linq.Expressions;
 using System.Threading.Tasks;
@@ -19,59 +20,70 @@ namespace ECommerce.Core.Data.Repository
             _dbSet = context.Set<TEntity>();
         }
 
-        public void Delete(TEntity entity)
+        public virtual async Task<IQueryable<TEntity>> AllAsync()
         {
-            throw new NotImplementedException();
+            return await Task.FromResult(_dbSet);
         }
 
-        public Task DeleteAsync(TEntity entity)
+        public virtual async Task<bool> AnyAsync(Expression<Func<TEntity, bool>> predicate)
         {
-            throw new NotImplementedException();
+            return await _dbSet.AnyAsync(predicate);
         }
 
-        public TEntity Get(TEntity entity)
+        public virtual async Task DeleteAsync(TEntity entity)
         {
-            throw new NotImplementedException();
+            if (entity==null)
+            {
+                throw new NullReferenceException($"{nameof(entity)} was not found!");
+            }
+            if (entity.GetType().GetProperty("IsDelete")!=null)
+            {
+                entity
+                    .GetType()
+                    .GetProperty("IsDelete")
+                    .SetValue(entity, true);
+                await UpdateAsync(entity);
+            }
         }
 
-        public IQueryable<TEntity> GetAllList()
+        public virtual async Task DeleteAsync(Expression<Func<TEntity, bool>> predicate)
         {
-            throw new NotImplementedException();
+            var entity = await FirstOrDefaultAsync(predicate);
+            await DeleteAsync(entity);
         }
 
-        public IQueryable<TEntity> GetAllList(Expression<Func<TEntity, bool>> predicate)
+        public virtual  Task<TEntity> FirstOrDefaultAsync(Expression<Func<TEntity, bool>> predicate)
         {
-            throw new NotImplementedException();
+            return this._dbSet.FirstOrDefaultAsync(predicate);
         }
 
-        public Task<IQueryable<TEntity>> GetAllListAsync()
+        public virtual async Task SaveAsync(TEntity entity)
         {
-            throw new NotImplementedException();
+            if (entity==null)
+            {
+                throw new NullReferenceException($"{nameof(entity)} was not found");
+            }
+            var item = await this._context.AddAsync<TEntity>(entity);
+            item.State = EntityState.Added;
         }
 
-        public Task<IQueryable<TEntity>> GetAllListAsync(Expression<Func<TEntity, bool>> predicate)
+        public virtual async Task UpdateAsync(TEntity entity)
         {
-            throw new NotImplementedException();
+            if (entity==null)
+            {
+                throw new NullReferenceException($"{nameof(entity)}was not found!");
+            }
+            await Task.Run(() =>
+            {
+                this._context.Attach<TEntity>(entity);
+                var item = this._context.Entry<TEntity>(entity);
+                item.State = EntityState.Modified;
+            });
         }
 
-        public TEntity Insert(TEntity entity)
+        public virtual async Task<IQueryable<TEntity>> WhereAsync(Expression<Func<TEntity, bool>> predicate)
         {
-            throw new NotImplementedException();
-        }
-
-        public Task<TEntity> InsertAsync(TEntity entity)
-        {
-            throw new NotImplementedException();
-        }
-
-        public TEntity Update(TEntity entity)
-        {
-            throw new NotImplementedException();
-        }
-
-        public Task<TEntity> UpdateAsync(TEntity entity)
-        {
-            throw new NotImplementedException();
+            return await Task.FromResult(_dbSet.Where(predicate));
         }
     }
 }

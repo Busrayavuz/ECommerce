@@ -2,5 +2,6 @@
 {
     public interface IDto
     {
+      long Id { get; set; }
     }
 }
