@@ -8,6 +8,6 @@ namespace ECommerce.Entities.Concrete
         public string BrandName { get; set; }
         public string Explanation { get; set; }
 
-        public virtual ICollection<Product> Products { get; set; }
+        public virtual List<Product> Products { get; set; }
     }
 }

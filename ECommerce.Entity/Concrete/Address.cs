@@ -8,10 +8,11 @@ namespace ECommerce.Entities.Concrete
     public class Address:Entity
     {
         public long DistrictId{ get; set; }
-        public District District { get; set; }
+        public virtual District District { get; set; }
         public long CountryId { get; set; }
-        public Country Country { get; set; }
+        public virtual Country Country { get; set; }
         public long CityId { get; set; }
-        public City City { get; set; }
+        public virtual City City { get; set; }
+        public string Details { get; set; }
     }
 }

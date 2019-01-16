@@ -3,6 +3,7 @@ using ECommerce.Core.Entity;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
 
@@ -22,8 +23,8 @@ namespace ECommerce.Core.Data.UnitOfWork
             }
             catch (Exception ex)
             {
-                Rollback();
-                throw ex;
+              await Rollback();
+              throw new Exception(ex.Message, ex);
             }
         }
 
@@ -32,9 +33,14 @@ namespace ECommerce.Core.Data.UnitOfWork
             return new Repository<T>(_dbContext);
         }
 
-        private void Rollback()
+        private async Task Rollback()
         {
-            _dbContext.Database.CurrentTransaction.Rollback();
+            await _dbContext
+               .ChangeTracker
+               .Entries()
+               .AsQueryable()
+               .ForEachAsync(x => x.Reload());
+            //await  _dbContext.Database.CurrentTransaction.Rollback();
         }
     }
 }

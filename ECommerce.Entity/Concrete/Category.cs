@@ -6,8 +6,9 @@ namespace ECommerce.Entities.Concrete
     public class Category:Entity
     {
         public string CategoryName { get; set; }
-        public int ParentCategoryId { get; set; }
+        public long? ParentCategoryId { get; set; }
+        public string Description { get; set; }
 
-        public virtual ICollection<Product> Products { get; set; }
+        public virtual List<ProductImage> ProductImage { get; set; }
     }
 }

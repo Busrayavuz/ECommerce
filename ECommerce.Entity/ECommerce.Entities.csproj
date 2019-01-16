@@ -9,4 +9,8 @@
     <ProjectReference Include="..\src\ECommerce.Core\ECommerce.Core.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Dto\" />
+  </ItemGroup>
+
 </Project>
