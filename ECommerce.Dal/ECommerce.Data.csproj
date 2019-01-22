@@ -10,12 +10,8 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\ECommerce.Entity\ECommerce.Entities.csproj" />
     <ProjectReference Include="..\src\ECommerce.Core\ECommerce.Core.csproj" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Folder Include="Abstract\" />
-    <Folder Include="Concrete\" />
   </ItemGroup>
 
 </Project>

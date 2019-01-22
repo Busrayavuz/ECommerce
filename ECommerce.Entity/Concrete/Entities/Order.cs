@@ -2,7 +2,7 @@
 using System;
 using System.Collections.Generic;
 
-namespace ECommerce.Entities.Concrete
+namespace ECommerce.Entities.Concrete.Entities
 {
     public class Order:Entity
     {

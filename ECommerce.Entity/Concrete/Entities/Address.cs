@@ -3,7 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace ECommerce.Entities.Concrete
+namespace ECommerce.Entities.Concrete.Entities
 {
     public class Address:Entity
     {

@@ -1,7 +1,7 @@
 ﻿using ECommerce.Core.Entity;
 using System.Collections.Generic;
 
-namespace ECommerce.Entities.Concrete
+namespace ECommerce.Entities.Concrete.Entities
 {
     public class OrderLine:Entity
     {

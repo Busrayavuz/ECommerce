@@ -5,9 +5,10 @@ namespace ECommerce.Core.Entity
     public interface IEntity
     {
         long  Id { get; set; }
-        DateTime? CreatedDate { get; set; }
-        DateTime? ModifiedDate{ get; set; }
-        DateTime? DeletedDate { get; set; }
+        long CreationUserId { get; set; }
+        DateTime CreationDate { get; set; }
+        long LastModifierUserId { get; set; }
+        DateTime LastModifierDate { get; set; }
         bool IsDeleted { get; set; }
     }
 }

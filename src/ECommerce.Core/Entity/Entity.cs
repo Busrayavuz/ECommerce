@@ -3,12 +3,13 @@
 namespace ECommerce.Core.Entity
 
 {
-    public class Entity : IEntity
+    public abstract class Entity : IEntity
     {
         public long Id { get; set; }
-        public DateTime? CreatedDate { get; set; }
-        public DateTime? ModifiedDate { get; set; }
-        public DateTime? DeletedDate { get; set; }
-        public bool IsDeleted { get; set; }
+        public long CreationUserId { get; set; }
+        public DateTime CreationDate { get; set; } = DateTime.UtcNow;
+        public long LastModifierUserId { get; set; }
+        public DateTime LastModifierDate { get; set; } = DateTime.UtcNow;
+        public bool IsDeleted { get; set; } = false;
     }
 }

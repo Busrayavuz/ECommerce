@@ -1,6 +1,6 @@
 ﻿using ECommerce.Core.Entity;
 
-namespace ECommerce.Entities.Concrete
+namespace ECommerce.Entities.Concrete.Entities
 {
     public class City:Entity
     {

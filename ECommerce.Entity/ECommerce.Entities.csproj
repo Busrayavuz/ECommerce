@@ -6,11 +6,13 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\src\ECommerce.Core\ECommerce.Core.csproj" />
+    <Compile Remove="Dto\**" />
+    <EmbeddedResource Remove="Dto\**" />
+    <None Remove="Dto\**" />
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Dto\" />
+    <ProjectReference Include="..\src\ECommerce.Core\ECommerce.Core.csproj" />
   </ItemGroup>
 
 </Project>

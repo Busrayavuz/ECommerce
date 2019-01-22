@@ -1,7 +1,7 @@
 ﻿using ECommerce.Core.Entity;
 using System.Collections.Generic;
 
-namespace ECommerce.Entities.Concrete
+namespace ECommerce.Entities.Concrete.Entities
 {
     public class Category:Entity
     {
@@ -10,5 +10,6 @@ namespace ECommerce.Entities.Concrete
         public string Description { get; set; }
 
         public virtual List<ProductImage> ProductImage { get; set; }
+        public virtual List<Product> Products { get; set; }
     }
 }
