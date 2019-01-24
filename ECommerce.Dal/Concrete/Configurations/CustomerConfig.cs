@@ -11,7 +11,11 @@ namespace ECommerce.Data.Concrete.Configurations
     {
         public void Configure(EntityTypeBuilder<Customer> builder)
         {
-            
+            builder
+                 .HasOne(x => x.CustomerAddress)
+                 .WithOne(x => x.Customer)
+                 .HasForeignKey<CustomerAddress>(x=>x.CustomerId)
+                 .OnDelete(DeleteBehavior.Restrict);
         }
     }
 }

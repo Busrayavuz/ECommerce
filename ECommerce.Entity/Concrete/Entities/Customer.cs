@@ -11,9 +11,7 @@ namespace ECommerce.Entities.Concrete.Entities
         public string Email { get; set; }
         public string Passwordd { get; set; }
         public bool IsWomen { get; set; }
-        public long AddressId { get; set; }
-        public virtual Address Address { get; set; }
-        public long OrderId { get; set; }
-        public virtual Order Order{ get; set; }
+        public long CustomerAddressId { get; set; }
+        public CustomerAddress CustomerAddress { get; set; }
     }
 }

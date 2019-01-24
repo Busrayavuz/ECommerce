@@ -12,9 +12,11 @@ namespace ECommerce.Entities.Concrete.Entities
         public string BillNo { get; set; }
         public string PhotoUrl { get; set; }
         public decimal TotalAmount { get; set; }
+        public long CustomerId { get; set; }
+        public virtual Customer Customers { get; set; }
 
         public virtual List<OrderLine> OrderLines { get; set; }
-        public virtual List<Customer> Customers { get; set; }
+       
 
     }
 }

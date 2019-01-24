@@ -28,8 +28,11 @@ namespace ECommerce.Data.Concrete.DBContext
         {
             base.OnModelCreating(modelBuilder);
             modelBuilder.ApplyConfiguration(new CityConfig());
-            modelBuilder.ApplyConfiguration(new ProductConfig());
             modelBuilder.ApplyConfiguration(new CountryConfig());
+            modelBuilder.ApplyConfiguration(new ProductConfig());
+            modelBuilder.ApplyConfiguration(new CustomerConfig());
+            modelBuilder.ApplyConfiguration(new OrderConfig());
+            modelBuilder.ApplyConfiguration(new OrderLineConfig());           
         }
 
     }

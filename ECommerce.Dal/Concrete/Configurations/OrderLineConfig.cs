@@ -14,7 +14,8 @@ namespace ECommerce.Data.Concrete.Configurations
             builder
                 .HasOne(x => x.Order)
                 .WithMany(x => x.OrderLines)
-                .HasForeignKey(x => x.OrderId);
+                .HasForeignKey(x => x.OrderId)
+                .OnDelete(DeleteBehavior.Restrict);
 
         }
     }

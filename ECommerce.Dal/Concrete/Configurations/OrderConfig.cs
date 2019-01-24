@@ -12,14 +12,16 @@ namespace ECommerce.Data.Concrete.Configurations
         public void Configure(EntityTypeBuilder<Order> builder)
         {
             builder
-               .HasMany(x => x.Customers)
-               .WithOne(x => x.Order)
-               .HasForeignKey(x=>x.OrderId);
+               .HasOne(x => x.Customers)
+               .WithMany()
+               .HasForeignKey(x=>x.CustomerId)
+               .OnDelete(DeleteBehavior.Restrict);
 
             builder
                 .HasMany(x => x.OrderLines)
                 .WithOne(x => x.Order)
-                .HasForeignKey(x => x.OrderId);
+                .HasForeignKey(x => x.OrderId)
+                .OnDelete(DeleteBehavior.Restrict);
 
         }
     }

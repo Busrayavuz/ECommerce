@@ -14,7 +14,8 @@ namespace ECommerce.Data.Concrete.Configurations
             builder
                   .HasOne(x => x.Category)
                   .WithMany(x => x.Products)
-                  .HasForeignKey(x => x.CategoryId);
+                  .HasForeignKey(x => x.CategoryId)
+                  .OnDelete(DeleteBehavior.Restrict);
 
             builder.HasIndex((x => new { x.CategoryId, x.UnitInStock }))
                .IsUnique(true);
@@ -22,12 +23,14 @@ namespace ECommerce.Data.Concrete.Configurations
             builder
                 .HasMany(x => x.Brands)
                 .WithOne(x => x.Product)
-                .HasForeignKey(x => x.ProductId);
+                .HasForeignKey(x => x.ProductId)
+                .OnDelete(DeleteBehavior.Restrict);
 
             builder
                 .HasOne(x => x.ProductImage)
                 .WithMany(x => x.Products)
-                .HasForeignKey(x => x.ProductImageId);
+                .HasForeignKey(x => x.ProductImageId)
+                .OnDelete(DeleteBehavior.Restrict);
         }
     }
 }
