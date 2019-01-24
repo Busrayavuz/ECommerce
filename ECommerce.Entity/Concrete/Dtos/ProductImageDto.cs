@@ -7,5 +7,7 @@ namespace ECommerce.Entities.Concrete.Dtos
 {
     public class ProductImageDto:Dto
     {
+        public string ProductImageName { get; set; }
+        public List<ProductDto> Products { get; set; }
     }
 }

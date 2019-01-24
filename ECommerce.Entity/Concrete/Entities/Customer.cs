@@ -13,5 +13,7 @@ namespace ECommerce.Entities.Concrete.Entities
         public bool IsWomen { get; set; }
         public long AddressId { get; set; }
         public virtual Address Address { get; set; }
+        public long OrderId { get; set; }
+        public virtual Order Order{ get; set; }
     }
 }

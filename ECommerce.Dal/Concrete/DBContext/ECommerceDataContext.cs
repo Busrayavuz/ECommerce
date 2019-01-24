@@ -1,4 +1,5 @@
-﻿using ECommerce.Entities.Concrete.Entities;
+﻿using ECommerce.Data.Concrete.Configurations;
+using ECommerce.Entities.Concrete.Entities;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
@@ -26,6 +27,9 @@ namespace ECommerce.Data.Concrete.DBContext
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);
+            modelBuilder.ApplyConfiguration(new CityConfig());
+            modelBuilder.ApplyConfiguration(new ProductConfig());
+            modelBuilder.ApplyConfiguration(new CountryConfig());
         }
 
     }

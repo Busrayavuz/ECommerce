@@ -5,11 +5,16 @@ namespace ECommerce.Entities.Concrete.Entities
 {
     public class OrderLine:Entity
     {
-        public long OrderId { get; set; }
+        public string Name { get; set; }
+        public int Quantity { get; set; } = 1;
         public decimal UnitPrice { get; set; }
-        public decimal Quantity { get; set; }
-        public decimal Discount { get; set; }
+        public string Description { get; set; }
+        public decimal TotalPrice { get; set; }
 
-        public virtual List<Product> Product { get; set; }
+        public long? ProductId { get; set; }
+        public virtual Product Product { get; set; }
+        public long OrderId { get; set; }
+        public virtual Order Order { get; set; }
+
     }
 }

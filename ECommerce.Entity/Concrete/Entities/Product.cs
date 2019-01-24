@@ -1,4 +1,5 @@
 ﻿using ECommerce.Core.Entity;
+using ECommerce.Entities.Concrete.Dtos;
 using System.Collections.Generic;
 
 namespace ECommerce.Entities.Concrete.Entities
@@ -10,9 +11,9 @@ namespace ECommerce.Entities.Concrete.Entities
         public short UnitInStock { get; set; }     
         public string Explanation { get; set; }
         public long CategoryId { get; set; }
-        public virtual Category Category { get; set; }
+        public virtual CategoryDto Category { get; set; }
         public long ProductImageId { get; set; }
-        public virtual ProductImage ProductImage { get; set; }
-        public virtual List<Brand> Brands { get; set; }
+        public virtual ProductImageDto ProductImage { get; set; }
+        public virtual List<BrandDto> Brands { get; set; }
     }
 }

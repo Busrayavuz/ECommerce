@@ -6,13 +6,15 @@ namespace ECommerce.Entities.Concrete.Entities
 {
     public class Order:Entity
     {
-        public int  OrderNumber { get; set; }
-        public DateTime OrderDate { get; set; }
-        public DateTime ShippedDate { get; set; }
-        public string ShipName { get; set; }
-        public long AddressId { get; set; }
-        public virtual Address ShipAddress { get; set; }
-        public virtual List<Customer> Customer { get; set; }
+        public string Description { get; set; }
+        public DateTime IssueDate { get; set; }
+        public DateTime DueDate { get; set; }
+        public string BillNo { get; set; }
+        public string PhotoUrl { get; set; }
+        public decimal TotalAmount { get; set; }
+
+        public virtual List<OrderLine> OrderLines { get; set; }
+        public virtual List<Customer> Customers { get; set; }
 
     }
 }
