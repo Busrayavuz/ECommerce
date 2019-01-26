@@ -14,5 +14,7 @@ namespace ECommerce.Entities.Concrete.Dtos
         public long CityId { get; set; }
         public virtual CityDto City { get; set; }
         public string Details { get; set; }
+        public long CustomerAddressId { get; set; }
+        public virtual CustomerAddressDto CustomersAddress { get; set; }
     }
 }

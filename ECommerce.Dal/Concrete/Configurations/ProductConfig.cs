@@ -30,6 +30,7 @@ namespace ECommerce.Data.Concrete.Configurations
                 .HasOne(x => x.ProductImage)
                 .WithMany(x => x.Products)
                 .HasForeignKey(x => x.ProductImageId)
+
                 .OnDelete(DeleteBehavior.Restrict);
         }
     }

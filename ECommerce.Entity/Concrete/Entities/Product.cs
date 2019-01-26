@@ -12,8 +12,7 @@ namespace ECommerce.Entities.Concrete.Entities
         public string Explanation { get; set; }
         public long CategoryId { get; set; }
         public virtual Category Category { get; set; }
-        public long ProductImageId { get; set; }
-        public virtual ProductImage ProductImage { get; set; }
+        public virtual List<ProductImage> ProductImage { get; set; }
         public virtual List<Brand> Brands { get; set; }
     }
 }

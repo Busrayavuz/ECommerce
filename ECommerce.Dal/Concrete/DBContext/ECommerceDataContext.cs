@@ -15,6 +15,7 @@ namespace ECommerce.Data.Concrete.DBContext
         public DbSet<Product> Product{ get; set; }
         public DbSet<Category> Category { get; set; }
         public DbSet<Customer> Customer { get; set; }
+        public DbSet<CustomerAddress> CustomerAddress { get; set; }
         public DbSet<Order> Order { get; set; }
         public DbSet<OrderLine> OrderLine { get; set; }
         public DbSet<Address> Address { get; set; }
@@ -32,7 +33,13 @@ namespace ECommerce.Data.Concrete.DBContext
             modelBuilder.ApplyConfiguration(new ProductConfig());
             modelBuilder.ApplyConfiguration(new CustomerConfig());
             modelBuilder.ApplyConfiguration(new OrderConfig());
-            modelBuilder.ApplyConfiguration(new OrderLineConfig());           
+            modelBuilder.ApplyConfiguration(new OrderLineConfig());
+            modelBuilder.ApplyConfiguration(new AddressConfig());
+            modelBuilder.ApplyConfiguration(new BrandConfig());
+            modelBuilder.ApplyConfiguration(new CategoryConfig());
+            modelBuilder.ApplyConfiguration(new CustomerAddressConfig());
+            modelBuilder.ApplyConfiguration(new ProductImageConfig());
+            modelBuilder.ApplyConfiguration(new ShoppingCardConfig());
         }
 
     }

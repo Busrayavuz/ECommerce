@@ -14,7 +14,7 @@ namespace ECommerce.Data.Concrete.Configurations
             builder
                .HasOne(x => x.Customers)
                .WithMany()
-               .HasForeignKey(x=>x.CustomerId)
+               .HasForeignKey(x => x.CustomerId)
                .OnDelete(DeleteBehavior.Restrict);
 
             builder

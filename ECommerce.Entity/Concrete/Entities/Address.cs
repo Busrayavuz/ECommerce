@@ -15,6 +15,6 @@ namespace ECommerce.Entities.Concrete.Entities
         public virtual City City { get; set; }
         public string Details { get; set; }
         public long  CustomerAddressId { get; set; }
-        public virtual List<CustomerAddress>Customers { get; set; }
+        public virtual List<CustomerAddress>CustomersAddress { get; set; }
     }
 }
